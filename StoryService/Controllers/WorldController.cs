@@ -2,31 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson.Serialization.Serializers;
-using StoryService.Models;
 using StoryService.Services;
 
 namespace StoryService.Controllers
 {
-    [Route("story")]
+    [Route("world")]
     [ApiController]
-    public class StoryController : ControllerBase
+    public class WorldController : ControllerBase
     {
         private readonly IStoryService _storyService;
-        public StoryController(IStoryService storyService)
+        public WorldController(IStoryService storyService)
         {
             _storyService = storyService;
         }
-        [HttpPost]
-        [Authorize]
-        public async Task<IActionResult> Post(CreateStoryModel model)
+
+        [HttpGet]
+        public async Task<IActionResult> GetStoriesOfWorld(Guid id)
         {
             try
             {
-                return Ok(await _storyService.CreateStory(model.WorldId, model.Title));
+                return Ok(await _storyService.GetStoriesOfWorld(id));
+
             }
             catch (Exception ex)
             {

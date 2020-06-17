@@ -40,7 +40,20 @@ namespace StoryService.Services
                 Title = newstory.Title
             });
             //update db and return the world
-            return await _worldRepository.Update(world.id, world);
+            return await _worldRepository.Update(world.Id, world);
+        }
+
+        public async Task<World> GetStoriesOfWorld(Guid worldId)
+        {
+            var world = await _worldRepository.Get(worldId);
+            if(world == null)
+            {
+                throw new WorldNotFoundException(worldId);
+            }
+            else
+            {
+                return world;
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace StoryService.Entities
 {
     public class World
     {
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public List<StoryRef> Stories { get; set; }
     }

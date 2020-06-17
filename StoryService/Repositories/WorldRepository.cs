@@ -28,13 +28,13 @@ namespace StoryService.Repositories
 
         public async Task Delete(Guid id)
         {
-            await _worlds.DeleteOneAsync(world => world.id == id);
+            await _worlds.DeleteOneAsync(world => world.Id == id);
             return;
         }
 
         public async Task<World> Get(Guid id)
         {
-            return await _worlds.Find(world => world.id == id).FirstOrDefaultAsync();
+            return await _worlds.Find(world => world.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task<World> Get(string title)
@@ -51,7 +51,7 @@ namespace StoryService.Repositories
             }
             else
             {
-                await _worlds.ReplaceOneAsync(world => world.id == id, worldIn);
+                await _worlds.ReplaceOneAsync(world => world.Id == id, worldIn);
                 return worldIn;
             }
         }

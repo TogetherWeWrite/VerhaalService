@@ -16,5 +16,13 @@ namespace StoryService.Services
         /// <returns></returns>
         /// <exception cref="WorldNotFoundException"></exception>
         public Task<World> CreateStory(Guid worldId, string title);
+
+        /// <summary>
+        /// Method used to get a world with its story references
+        /// </summary>
+        /// <param name="worldId"></param>
+        /// <returns></returns>
+        /// <exception cref="WorldNotFoundException"></exception>
+        public Task<World> GetStoriesOfWorld(Guid worldId);
     }
 }

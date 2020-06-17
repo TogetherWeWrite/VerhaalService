@@ -23,7 +23,7 @@ namespace StoryService.MessageHandlers
         {
             var createworld = new World()
             {
-                id = sendable.Id,
+                Id = sendable.Id,
                 Stories = new List<StoryRef>(),
                 Title = sendable.Title
             };
