@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: story-service
+  namespace: production
+  labels:
+    app: story-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: story-service
+  template:
+    metadata:
+      labels:
+        app: story-service
+    spec:
+      containers:
+        - image: bstijnb/story-service
+          imagePullPolicy: IfNotPresent
+          name: story-service
+          ports: 
+            - containerPort: 80
