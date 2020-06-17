@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Core.Operations;
 using StoryService.Entities;
 using StoryService.Settings;
 using System;
@@ -31,7 +32,7 @@ namespace StoryService.Repositories
 
         public async Task<Story> Get(Guid id)
         {
-            throw new NotImplementedException();
+            return await _storys.Find(story => story.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task<Story> Get(string Title)
@@ -41,7 +42,8 @@ namespace StoryService.Repositories
 
         public async Task<Story> Update(Guid id, Story storyIn)
         {
-            throw new NotImplementedException();
+            await _storys.ReplaceOneAsync(story => story.Id == id, storyIn);
+            return storyIn;
         }
     }
 }

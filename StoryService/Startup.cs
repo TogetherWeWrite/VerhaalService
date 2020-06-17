@@ -78,6 +78,7 @@ namespace StoryService
             #endregion
             #region services
             services.AddTransient<IStoryService, StoryService.Services.StoryService>();
+            services.AddTransient<IPageService, StoryService.Services.PageService>();
             #endregion
             #region
             services.AddTransient<IWorldRepository, WorldRepository>();

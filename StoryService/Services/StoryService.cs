@@ -31,7 +31,7 @@ namespace StoryService.Services
                 Id = Guid.NewGuid(),
                 Title = title,
                 Chapters = new Dictionary<string, List<int>>(),
-                Pages = new Dictionary<int, Page>()
+                Pages = new Dictionary<string, Page>()
             });
             // new world that you added storyref too 
             world.Stories.Add(new StoryRef()
