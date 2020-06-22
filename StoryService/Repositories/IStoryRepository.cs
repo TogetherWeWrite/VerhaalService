@@ -42,5 +42,7 @@ namespace StoryService.Repositories
         /// <param name="story"></param>
         /// <returns></returns>
         Task<Story> Create(Story story);
+
+        Task RemoveRange(List<StoryRef> stories);
     }
 }

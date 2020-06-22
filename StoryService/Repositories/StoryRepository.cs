@@ -40,6 +40,16 @@ namespace StoryService.Repositories
             throw new NotImplementedException();
         }
 
+        public async Task RemoveRange(List<StoryRef> stories)
+        {
+            List<Guid> ids = new List<Guid>();
+            foreach (var story in stories)
+            {
+                ids.Add(story.Id);
+            }
+            await _storys.DeleteManyAsync(story => ids.Contains(story.Id));
+        }
+
         public async Task<Story> Update(Guid id, Story storyIn)
         {
             await _storys.ReplaceOneAsync(story => story.Id == id, storyIn);

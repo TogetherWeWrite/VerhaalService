@@ -67,7 +67,7 @@ namespace StoryService
             services.Configure<MessagequeueSettings>(Configuration.GetSection("MessageQueueSettings"));
             services.AddMessageConsumer(Configuration["MessageQueueSettings:Uri"],
                 "verhaal-service",
-                builder => builder.WithHandler<WorldMessagehandler>("new-world"));
+                builder => builder.WithHandler<WorldMessagehandler>("new-world").WithHandler<WorldDeleteMessageHandler>("delete-world"));
             #endregion
             #region db injection
             services.Configure<StoryServiceDatastoreSettings>(
@@ -79,6 +79,7 @@ namespace StoryService
             #region services
             services.AddTransient<IStoryService, StoryService.Services.StoryService>();
             services.AddTransient<IPageService, StoryService.Services.PageService>();
+            services.AddTransient<IWorldEditService, WorldEditService>();
             #endregion
             #region
             services.AddTransient<IWorldRepository, WorldRepository>();
